@@ -1,6 +1,10 @@
 /*Queries that provide answers to the questions from all projects.*/
 
-INSERT INTO animals VALUES (DEFAULT, 'Agumon', '2020-02-03', 0, '1', 10.23);
-INSERT INTO animals VALUES (DEFAULT, 'Gabumon', '2018-11-15', 1, '0', 8);
-INSERT INTO animals VALUES (DEFAULT, 'Pikachu', '2021-06-07', 0, '1', 15.04);
-INSERT INTO animals VALUES (DEFAULT, 'Devimon', '2017-05-12', 5, '1', 11);
+SELECT * FROM animals WHERE name LIKE '%mon';
+SELECT name FROM animals WHERE date_of_birth BETWEEN '2016-01-01' AND '2019-01-01';
+SELECT name FROM animals WHERE neutered  IN  ('1') AND escape_attempts < 3;
+SELECT date_of_birth FROM animals WHERE name  IN  ('Agumon', 'Pikachu');
+SELECT name, escape_attempts FROM animals WHERE weight_kg > 10.5;
+SELECT * FROM animals WHERE neutered IN ('1');
+SELECT * FROM animals WHERE name NOT IN ('Gabumon');
+SELECT * FROM animals WHERE weight_kg BETWEEN 10.3 AND 17.4;
