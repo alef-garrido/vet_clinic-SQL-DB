@@ -21,32 +21,23 @@ You can run it on your local machine by cloning the project:
 - cd to the folder where you cloned the repo.
 - Now you can run the commnads below as needed.
 
-This repository includes files with plain SQL that can be used to recreate a database:
+This repository includes files with plain SQL used to recreate a database:
 
-1. Run this in your bash terminal to gain access to postgres command line
-~~~ bash
-$ psql postgres
-~~~
+1. Create a DB on your local end
 
-2. Create a new database with any name ('vet-clinic' is suggested), and connect to that database.
-~~~ postgres
-# CREATE DATABASE <database_name>;
-# \c <database_name>
-~~~
-
-3. Use [schema.sql](./schema.sql) to create all tables. Copy and paste the content of this file into the postgres command line. That should create the tables in your database.
+2. Use [schema.sql](./schema.sql) to create all tables. Copy and paste the content of this file into the postgres command line. That should create the tables in your database.
 Now verify it. The following command displays all tables in your database:
 ~~~ postgres
 # \d
 ~~~
 
-4.  Use [data.sql](./data.sql) to populate tables with sample data. Copy and paste the content of this file into the postgres command line. That should create the tables in your database.
+3.  Use [data.sql](./data.sql) to populate tables with sample data. Copy and paste the content of this file into the postgres command line. That should create the tables in your database.
 Now verify it. The following command displays all content in your selected table:
 ~~~ postgres
 # SELECT * FROM <table_name>;
 ~~~
 
-5. Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. Copy and paste the content of this file into the postgres command line. That should create the display an enormous list of queries that I prepared. It's recommended to run them individually for better understanding.
+4. Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. Copy and paste the content of this file into the postgres command line. That should create the display an enormous list of queries that I prepared. It's recommended to run them individually for better understanding.
 **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
 
 
