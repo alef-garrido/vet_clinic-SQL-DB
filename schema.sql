@@ -10,3 +10,14 @@ weight_kg		DECIMAL,
 species     VARCHAR(250),
 PRIMARY KEY(id)
 );
+
+CREATE TABLE owners(
+  id           SERIAL PRIMARY KEY,
+  full_name    VARCHAR(250),
+  age          INT 
+);
+
+CREATE TABLE species(
+id      SERIAL PRIMARY KEY,
+name    VARCHAR(250)
+);
