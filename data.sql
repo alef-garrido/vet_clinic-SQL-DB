@@ -11,4 +11,11 @@ INSERT INTO animals VALUES (DEFAULT, 'Angemon', '2005-06-12', 1, '1', -45.13);
 INSERT INTO animals VALUES (DEFAULT, 'Boarmon', '2005-06-07', 7, '1', 20.4);
 INSERT INTO animals VALUES (DEFAULT, 'Blossom', '1998-10-13', 3, '1', 17);
 INSERT INTO animals VALUES (DEFAULT, 'Ditto', '2022-05-14', 4, '1', 22);
+--Owners table insertions
+INSERT INTO owners VALUES (DEFAULT, 'Sam Smith', 34);
+INSERT INTO owners VALUES (DEFAULT, 'Jennifer Orwell', 19);
+INSERT INTO owners VALUES (DEFAULT, 'Bob', 45);
+INSERT INTO owners VALUES (DEFAULT, 'Melody Pond', 77);
+INSERT INTO owners VALUES (DEFAULT, 'Dean Winchester', 14);
+INSERT INTO owners VALUES (DEFAULT, 'Jodie Whittaker ', 38);
 
