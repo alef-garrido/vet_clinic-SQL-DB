@@ -18,4 +18,6 @@ INSERT INTO owners VALUES (DEFAULT, 'Bob', 45);
 INSERT INTO owners VALUES (DEFAULT, 'Melody Pond', 77);
 INSERT INTO owners VALUES (DEFAULT, 'Dean Winchester', 14);
 INSERT INTO owners VALUES (DEFAULT, 'Jodie Whittaker ', 38);
-
+--Species table insertions
+INSERT INTO species VALUES (DEFAULT, 'Pokemon');
+INSERT INTO species VALUES (DEFAULT, 'Digimon');
