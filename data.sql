@@ -52,15 +52,53 @@ INSERT INTO species VALUES (DEFAULT, 'Digimon');
 
 --Modify animals' rows so it includes the species_id value
 BEGIN;
-UPDATE animals SET species_id = species.id
-FROM species
+UPDATE animals SET species_id = species.id FROM species
 WHERE animals.name LIKE '%mon'
 AND species.name Like 'Digimon';
 COMMIT;
 
 BEGIN;
-UPDATE animals SET species_id = species.id
-FROM species
+UPDATE animals SET species_id = species.id FROM species
 WHERE animals.species_id IS NULL
 AND species.name LIKE 'Pokemon'; 
+COMMIT;
+--Sam Smith owns Agumon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Agumon'
+AND owners.full_name = 'Sam Smith'; 
+COMMIT;
+--Jennifer Orwell owns Gabumon and Pikachu.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Pikachu'
+AND owners.full_name = 'Jennifer Orwell'
+OR animals.name = 'Gabumon'
+AND owners.full_name = 'Jennifer Orwell'; 
+COMMIT;
+--Bob owns Devimon and Plantmon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Plantmon'
+AND owners.full_name = 'Bob'
+OR animals.name = 'Devimon'
+AND owners.full_name = 'Bob';
+COMMIT;
+--Melody Pond owns Charmander, Squirtle, and Blossom.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name LIKE 'Charmander'
+AND owners.full_name LIKE 'Melody Pond'
+OR animals.name LIKE 'Squirtle'
+AND owners.full_name LIKE 'Melody Pond'
+OR animals.name LIKE 'Blossom'
+AND owners.full_name LIKE 'Melody Pond';
+COMMIT;
+--Dean Winchester owns Angemon and Boarmon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Angemon'
+AND owners.full_name = 'Dean Winchester'
+OR animals.name = 'Boarmon'
+AND owners.full_name = 'Dean Winchester';
 COMMIT;
