@@ -39,5 +39,11 @@ INNER JOIN species s
 ON a.species_id = s.id
 GROUP BY s.name;
 --List all Digimon owned by Jennifer Orwell.
+SELECT a.name
+FROM animals a
+LEFT JOIN owners o
+ON a.owner_id = o.id
+WHERE o.full_name = 'Jennifer Orwell'
+AND a.species_id = 2; 
 --List all animals owned by Dean Winchester that haven't tried to escape.
 --Who owns the most animals?
