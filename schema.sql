@@ -2,7 +2,7 @@
 
 CREATE TABLE animals(
 id			    INT GENERATED ALWAYS AS IDENTITY,
-name			VARCHAR(250),
+name			  VARCHAR(250),
 date_of_birth	DATE,
 escape_attempts	INT,
 neutered		BIT,
@@ -33,3 +33,11 @@ ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species (id);
 --Add column owner_id which is a foreign key referencing the owners table
 ALTER TABLE animals ADD COLUMN owner_id INT;
 ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners (id);
+
+--Create a table named vets
+CREATE TABLE vets (
+  id      SERIAL PRIMARY KEY,
+  name    VARCHAR(50),
+  age     INT,
+  date_of_graduation DATE
+);
