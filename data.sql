@@ -86,13 +86,9 @@ AND owners.full_name = 'Bob';
 COMMIT;
 --Melody Pond owns Charmander, Squirtle, and Blossom.
 BEGIN;
-UPDATE animals SET owner_id = owners.id FROM owners
-WHERE animals.name LIKE 'Charmander'
-AND owners.full_name LIKE 'Melody Pond'
-OR animals.name LIKE 'Squirtle'
-AND owners.full_name LIKE 'Melody Pond'
-OR animals.name LIKE 'Blossom'
-AND owners.full_name LIKE 'Melody Pond';
+UPDATE animals
+   SET owner_id = (SELECT id from owners WHERE full_name = 'Melody Pond')
+   WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
 COMMIT;
 --Dean Winchester owns Angemon and Boarmon.
 BEGIN;
