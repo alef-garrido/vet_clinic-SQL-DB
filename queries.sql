@@ -53,3 +53,8 @@ ON a.owner_id = o.id
 WHERE o.full_name = 'Dean Winchester'
 AND a.escape_attempts = 0; 
 --Who owns the most animals?
+SELECT COUNT(a.owner_id) as owned, o.full_name
+FROM animals a
+INNER JOIN owners o
+ON a.owner_id = o.id
+GROUP BY o.full_name;
