@@ -11,4 +11,90 @@ INSERT INTO animals VALUES (DEFAULT, 'Angemon', '2005-06-12', 1, '1', -45.13);
 INSERT INTO animals VALUES (DEFAULT, 'Boarmon', '2005-06-07', 7, '1', 20.4);
 INSERT INTO animals VALUES (DEFAULT, 'Blossom', '1998-10-13', 3, '1', 17);
 INSERT INTO animals VALUES (DEFAULT, 'Ditto', '2022-05-14', 4, '1', 22);
+--Owners table insertions
+INSERT INTO owners VALUES (DEFAULT, 'Sam Smith', 34);
+INSERT INTO owners VALUES (DEFAULT, 'Jennifer Orwell', 19);
+INSERT INTO owners VALUES (DEFAULT, 'Bob', 45);
+INSERT INTO owners VALUES (DEFAULT, 'Melody Pond', 77);
+INSERT INTO owners VALUES (DEFAULT, 'Dean Winchester', 14);
+INSERT INTO owners VALUES (DEFAULT, 'Jodie Whittaker ', 38);
 
+BEGIN;
+UPDATE animals SET species = 'unspecified';
+SELECT * FROM animals;
+ROLLBACK;
+SELECT * FROM animals;
+BEGIN;
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species = 'pokemon' WHERE species IS null;
+COMMIT;
+SELECT * FROM animals;
+BEGIN;
+DELETE FROM animals;
+SELECT * FROM animals;
+ROLLBACK;
+SELECT * FROM animals;
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SELECT * FROM animals;
+SAVEPOINT deleteByBirth;
+UPDATE animals SET weight_kg = weight_kg * -1;
+SELECT * FROM animals;
+ROLLBACK TO deleteByBirth;
+SELECT * FROM animals;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+SELECT * FROM animals;
+COMMIT;
+
+--Species table insertions
+INSERT INTO species VALUES (DEFAULT, 'Pokemon');
+INSERT INTO species VALUES (DEFAULT, 'Digimon');
+
+--Modify animals' rows so it includes the species_id value
+BEGIN;
+UPDATE animals SET species_id = species.id FROM species
+WHERE animals.name LIKE '%mon'
+AND species.name Like 'Digimon';
+COMMIT;
+
+BEGIN;
+UPDATE animals SET species_id = species.id FROM species
+WHERE animals.species_id IS NULL
+AND species.name LIKE 'Pokemon'; 
+COMMIT;
+--Sam Smith owns Agumon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Agumon'
+AND owners.full_name = 'Sam Smith'; 
+COMMIT;
+--Jennifer Orwell owns Gabumon and Pikachu.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Pikachu'
+AND owners.full_name = 'Jennifer Orwell'
+OR animals.name = 'Gabumon'
+AND owners.full_name = 'Jennifer Orwell'; 
+COMMIT;
+--Bob owns Devimon and Plantmon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Plantmon'
+AND owners.full_name = 'Bob'
+OR animals.name = 'Devimon'
+AND owners.full_name = 'Bob';
+COMMIT;
+--Melody Pond owns Charmander, Squirtle, and Blossom.
+BEGIN;
+UPDATE animals
+   SET owner_id = (SELECT id from owners WHERE full_name = 'Melody Pond')
+   WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+COMMIT;
+--Dean Winchester owns Angemon and Boarmon.
+BEGIN;
+UPDATE animals SET owner_id = owners.id FROM owners
+WHERE animals.name = 'Angemon'
+AND owners.full_name = 'Dean Winchester'
+OR animals.name = 'Boarmon'
+AND owners.full_name = 'Dean Winchester';
+COMMIT;
