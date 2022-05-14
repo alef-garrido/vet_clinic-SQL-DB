@@ -41,3 +41,13 @@ CREATE TABLE vets (
   age     INT,
   date_of_graduation DATE
 );
+
+--Create a "join table" called specializations to handle this relationship.
+CREATE TABLE specializations (
+    vet_id int NOT NULL,
+    species_id int NOT NULL,
+    CONSTRAINT specializations_pk PRIMARY KEY (vet_id,species_id),
+    CONSTRAINT specializations_fk FOREIGN KEY (vet_id) REFERENCES vets(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT specializations_fk_1 FOREIGN KEY (species_id) REFERENCES species(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
