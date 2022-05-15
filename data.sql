@@ -159,9 +159,29 @@ FROM animals a
 JOIN vets v 
 ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
 -- Pikachu visited Maisy Smith on Mar 8th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-03-08' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
 -- Pikachu visited Maisy Smith on May 14th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-05-14' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
 -- Devimon visited Stephanie Mendez on May 4th, 2021.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2021-05-04' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Devimon' AND v.name = 'Stephanie Mendez';
 -- Charmander visited Jack Harkness on Feb 24th, 2021.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2021-02-24' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Charmander' AND v.name = 'Jack Harkness';
 -- Plantmon visited Maisy Smith on Dec 21st, 2019.
 -- Plantmon visited William Tatcher on Aug 10th, 2020.
 -- Plantmon visited Maisy Smith on Apr 7th, 2021.
