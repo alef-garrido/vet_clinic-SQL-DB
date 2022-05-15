@@ -110,3 +110,22 @@ VALUES ('Stephanie Mendez',64,'1981-05-04');
 -- Vet Jack Harkness is 38 years old and graduated Jun 8th, 2008.
 INSERT INTO vets ("name",age,date_of_graduation)
 VALUES ('Jack Harkness',38,'2008-06-08'); 
+ -- Vet William Tatcher is specialized in Pokemon.
+INSERT INTO specializations (species_id, vet_id)
+SELECT s.id, v.id
+FROM species s
+JOIN vets v
+ON s.name = 'Pokemon' AND v.name = 'William Tatcher';
+ -- Vet Stephanie Mendez is specialized in Digimon and Pokemon.
+ INSERT INTO specializations (species_id, vet_id) 
+SELECT s.id, v.id 
+FROM species s 
+JOIN vets v 
+ON s.name = 'Pokemon' AND v.name = 'Stephanie Mendez';
+
+INSERT INTO specializations (species_id, vet_id) 
+SELECT s.id, v.id 
+FROM species s 
+JOIN vets v 
+ON s.name = 'Digimon' AND v.name = 'Stephanie Mendez';
+ -- Vet Jack Harkness is specialized in Digimon.
