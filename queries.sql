@@ -89,29 +89,47 @@ SELECT max(mycount.count), mycount.name
 FROM (
 	SELECT count(v."date"), a."name" 
 	FROM visits v 
-	JOIN animals a on v.animal_id = a.id
+	JOIN animals a ON v.animal_id = a.id
 	GROUP BY a."name"
 ) AS mycount
 
 GROUP BY mycount.name
 
-having max(mycount.count) = (
+HAVING max(mycount.count) = (
 	SELECT max(mycount.count)
 	FROM (
 		SELECT count(v."date"), a."name" 
 		FROM visits v 
-		JOIN animals a on v.animal_id = a.id 
+		JOIN animals a ON v.animal_id = a.id 
 		GROUP BY a."name"
 	) AS mycount
-
+);
 -- Who was Maisy Smith's first visit?
-SELECT v.date, a.name as pokemon, v2."name" as vet 
+SELECT v.date, a.name AS pokemon, v2."name" AS vet 
 FROM visits v 
 JOIN animals a ON v.animal_id = a.id 
 JOIN vets v2 ON v.vet_id = v2.id
-where v2."name" = 'Maisy Smith'
-order by v."date" asc limit 1;
+WHERE v2."name" = 'Maisy Smith'
+ORDER BY v."date" ASC LIMIT 1;
 -- Details for most recent visit: animal information, vet information, and date of visit.
+SELECT v.date, a.name AS pokemon, v2."name" AS vet
+FROM visits v 
+JOIN animals a ON v.animal_id = a.id 
+JOIN vets v2 ON v.vet_id = v2.id
+ORDER BY v."date" DESC LIMIT 1;
 -- How many visits were with a vet that did not specialize in that animal's species?
+SELECT v.date, animals, vets
+FROM visits v 
+JOIN animals ON v.animal_id = animals.id 
+JOIN vets ON v.vet_id = vets.id
+ORDER BY v."date" DESC LIMIT 1;
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+SELECT count(visits.animal_id), species."name" AS specie
+FROM visits
+JOIN animals ON visits.animal_id = animals.id 
+JOIN species ON animals.species_id = species.id
+JOIN vets ON visits.vet_id = vets.id
+WHERE vets."name" = 'Maisy Smith'
+GROUP BY  species."name"
+ORDER BY count(visits.animal_id ) DESC LIMIT 1;
 
