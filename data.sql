@@ -117,7 +117,7 @@ FROM species s
 JOIN vets v
 ON s.name = 'Pokemon' AND v.name = 'William Tatcher';
  -- Vet Stephanie Mendez is specialized in Digimon and Pokemon.
- INSERT INTO specializations (species_id, vet_id) 
+INSERT INTO specializations (species_id, vet_id) 
 SELECT s.id, v.id 
 FROM species s 
 JOIN vets v 
