@@ -129,3 +129,8 @@ FROM species s
 JOIN vets v 
 ON s.name = 'Digimon' AND v.name = 'Stephanie Mendez';
  -- Vet Jack Harkness is specialized in Digimon.
+INSERT INTO specializations (species_id, vet_id) 
+SELECT s.id, v.id 
+FROM species s 
+JOIN vets v 
+ON s.name = 'Digimon' AND v.name = 'Jack Harkness';
