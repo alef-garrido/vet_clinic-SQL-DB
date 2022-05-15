@@ -105,6 +105,12 @@ having max(mycount.count) = (
 	) AS mycount
 
 -- Who was Maisy Smith's first visit?
+SELECT v.date, a.name as pokemon, v2."name" as vet 
+FROM visits v 
+JOIN animals a ON v.animal_id = a.id 
+JOIN vets v2 ON v.vet_id = v2.id
+where v2."name" = 'Maisy Smith'
+order by v."date" asc limit 1;
 -- Details for most recent visit: animal information, vet information, and date of visit.
 -- How many visits were with a vet that did not specialize in that animal's species?
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
