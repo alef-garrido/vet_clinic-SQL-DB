@@ -183,14 +183,74 @@ FROM animals a
 JOIN vets v 
 ON a.name = 'Charmander' AND v.name = 'Jack Harkness';
 -- Plantmon visited Maisy Smith on Dec 21st, 2019.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2019-12-21' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Plantmon' AND v.name = 'Maisy Smith';
 -- Plantmon visited William Tatcher on Aug 10th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-08-10' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Plantmon' AND v.name = 'William Tatcher';
 -- Plantmon visited Maisy Smith on Apr 7th, 2021.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2021-04-07' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Plantmon' AND v.name = 'Maisy Smith';
 -- Squirtle visited Stephanie Mendez on Sep 29th, 2019.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2019-09-29' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Squirtle' AND v.name = 'Stephanie Mendez';
 -- Angemon visited Jack Harkness on Oct 3rd, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-10-03' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Angemon' AND v.name = 'Jack Harkness';
 -- Angemon visited Jack Harkness on Nov 4th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-11-04' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Angemon' AND v.name = 'Jack Harkness';
 -- Boarmon visited Maisy Smith on Jan 24th, 2019.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2019-01-24' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
 -- Boarmon visited Maisy Smith on May 15th, 2019.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2019-05-15' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
 -- Boarmon visited Maisy Smith on Feb 27th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-02-27' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
 -- Boarmon visited Maisy Smith on Aug 3rd, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-08-03' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
 -- Blossom visited Stephanie Mendez on May 24th, 2020.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-05-24' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Blossom' AND v.name = 'Stephanie Mendez';
 -- Blossom visited William Tatcher on Jan 11th, 2021.
+INSERT INTO visits (animal_id, vet_id, date) 
+SELECT a.id, v.id, '2020-01-11' 
+FROM animals a 
+JOIN vets v 
+ON a.name = 'Blossom' AND v.name = 'William Tatcher';
