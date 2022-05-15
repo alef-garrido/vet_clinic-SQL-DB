@@ -63,18 +63,47 @@ SELECT v.date, a.name as pokemon, v2."name" as vet
 FROM visits v 
 JOIN animals a ON v.animal_id = a.id 
 JOIN vets v2 ON v.vet_id = v2.id
-where v2."name" = 'William Tatcher'
-order by v."date" desc limit 1;
+WHERE v2."name" = 'William Tatcher'
+ORDER BY v."date" desc limit 1;
 -- How many different animals did Stephanie Mendez see?
 SELECT count(distinct v.animal_id), v2."name" as vet
 FROM visits v 
 JOIN animals a ON v.animal_id = a.id 
 JOIN vets v2 ON v.vet_id = v2.id
-where v2."name" = 'Stephanie Mendez'
-group by v2."name";
+WHERE v2."name" = 'Stephanie Mendez'
+GROUP by v2."name";
 -- List all vets and their specialties, including vets with no specialties.
+SELECT v."name", s2."name" 
+FROM vets v 
+LEFT JOIN specializations s on s.vet_id = v.id 
+LEFT JOIN species s2 on s.species_id = s2.id ;
 -- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+SELECT v.date, a.name as pokemon, v2."name" as vet 
+FROM visits v 
+JOIN animals a ON v.animal_id = a.id 
+JOIN vets v2 ON v.vet_id = v2.id
+WHERE v2."name" = 'Stephanie Mendez' AND v."date" BETWEEN 'apr-01-2020' AND 'aug-30-2020';
 -- What animal has the most visits to vets?
+SELECT max(mycount.count), mycount.name
+
+FROM (
+	SELECT count(v."date"), a."name" 
+	FROM visits v 
+	JOIN animals a on v.animal_id = a.id
+	GROUP BY a."name"
+) AS mycount
+
+GROUP BY mycount.name
+
+having max(mycount.count) = (
+	SELECT max(mycount.count)
+	FROM (
+		SELECT count(v."date"), a."name" 
+		FROM visits v 
+		JOIN animals a on v.animal_id = a.id 
+		GROUP BY a."name"
+	) AS mycount
+
 -- Who was Maisy Smith's first visit?
 -- Details for most recent visit: animal information, vet information, and date of visit.
 -- How many visits were with a vet that did not specialize in that animal's species?
