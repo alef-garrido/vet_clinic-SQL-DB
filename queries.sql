@@ -132,4 +132,3 @@ JOIN vets ON visits.vet_id = vets.id
 WHERE vets."name" = 'Maisy Smith'
 GROUP BY  species."name"
 ORDER BY count(visits.animal_id ) DESC LIMIT 1;
-

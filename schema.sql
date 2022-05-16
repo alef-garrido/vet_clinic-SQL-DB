@@ -1,4 +1,9 @@
-/* Database schema to keep the structure of entire database. */
+DROP TABLE IF EXISTS owners CASCADE;
+DROP TABLE IF EXISTS species CASCADE;
+DROP TABLE IF EXISTS vets CASCADE;
+DROP TABLE IF EXISTS animals CASCADE;
+DROP TABLE IF EXISTS specializations;
+DROP TABLE IF EXISTS visits;
 
 CREATE TABLE animals(
 id			    INT GENERATED ALWAYS AS IDENTITY,
@@ -14,13 +19,13 @@ PRIMARY KEY(id)
 --Create a table named owners 
 CREATE TABLE owners(
   id           SERIAL PRIMARY KEY,
-  full_name    VARCHAR(250),
+  full_name    VARCHAR(250) NOT NULL,
   age          INT 
 );
 --Create a table named species
 CREATE TABLE species(
 id      SERIAL PRIMARY KEY,
-name    VARCHAR(250)
+name    VARCHAR(250) NOT NULL,
 );
 
 --Remove column species
@@ -52,7 +57,6 @@ CREATE TABLE specializations (
 );
 --Create a "join table" called visits 
 CREATE TABLE visits (
-    id  SERIAL PRIMARY KEY,
     date_of_visit DATE NULL,
     vet_id        INT NULL,
     animal_id     INT NULL,
@@ -61,5 +65,6 @@ CREATE TABLE visits (
 );
 -- Add an email column to your owners table
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
-
+--Update visits table to add id column
+ALTER TABLE visits ADD COLUMN id INT GENERATED ALWAYS AS IDENTITY;
 
