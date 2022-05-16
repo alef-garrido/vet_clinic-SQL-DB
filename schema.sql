@@ -52,9 +52,12 @@ CREATE TABLE specializations (
 );
 --Create a "join table" called visits 
 CREATE TABLE visits (
-    "date" date NULL,
-    vet_id int NULL,
-    animal_id int NULL,
+    date_of_visit DATE NULL,
+    vet_id        INT NULL,
+    animal_id     INT NULL,
     CONSTRAINT visits_fk_1 FOREIGN KEY (vet_id) REFERENCES vets(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT visits_fk FOREIGN KEY (animal_id) REFERENCES animals(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+-- Adding Non-clustered index
