@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS vets CASCADE;
 DROP TABLE IF EXISTS animals CASCADE;
 DROP TABLE IF EXISTS specializations;
 DROP TABLE IF EXISTS visits;
-
+--Create animals table
 CREATE TABLE animals(
 id			    INT GENERATED ALWAYS AS IDENTITY,
 name			  VARCHAR(250),
