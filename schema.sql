@@ -52,6 +52,7 @@ CREATE TABLE specializations (
 );
 --Create a "join table" called visits 
 CREATE TABLE visits (
+    id  SERIAL PRIMARY KEY,
     date_of_visit DATE NULL,
     vet_id        INT NULL,
     animal_id     INT NULL,
@@ -60,4 +61,5 @@ CREATE TABLE visits (
 );
 -- Add an email column to your owners table
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
--- Adding Non-clustered index
+
+
