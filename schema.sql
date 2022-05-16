@@ -67,4 +67,7 @@ CREATE TABLE visits (
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
 --Update visits table to add id column
 ALTER TABLE visits ADD COLUMN id INT GENERATED ALWAYS AS IDENTITY;
-
+-- Add Non-clustered index for tables
+CREATE INDEX animal_id_index ON visits (animal_id);
+CREATE INDEX vet_id_id_index ON visits (vet_id);
+CREATE INDEX email_id_index ON owners (email);
