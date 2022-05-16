@@ -2,7 +2,7 @@
 
 CREATE TABLE animals(
 id			    INT GENERATED ALWAYS AS IDENTITY,
-name			VARCHAR(250),
+name			  VARCHAR(250),
 date_of_birth	DATE,
 escape_attempts	INT,
 neutered		BIT,
@@ -33,3 +33,28 @@ ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species (id);
 --Add column owner_id which is a foreign key referencing the owners table
 ALTER TABLE animals ADD COLUMN owner_id INT;
 ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners (id);
+
+--Create a table named vets
+CREATE TABLE vets (
+  id      SERIAL PRIMARY KEY,
+  name    VARCHAR(50),
+  age     INT,
+  date_of_graduation DATE
+);
+
+--Create a "join table" called specializations to handle this relationship.
+CREATE TABLE specializations (
+    vet_id int NOT NULL,
+    species_id int NOT NULL,
+    CONSTRAINT specializations_pk PRIMARY KEY (vet_id,species_id),
+    CONSTRAINT specializations_fk FOREIGN KEY (vet_id) REFERENCES vets(id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT specializations_fk_1 FOREIGN KEY (species_id) REFERENCES species(id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+--Create a "join table" called visits 
+CREATE TABLE visits (
+    "date" date NULL,
+    vet_id int NULL,
+    animal_id int NULL,
+    CONSTRAINT visits_fk_1 FOREIGN KEY (vet_id) REFERENCES vets(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT visits_fk FOREIGN KEY (animal_id) REFERENCES animals(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
