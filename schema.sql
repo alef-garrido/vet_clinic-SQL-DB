@@ -104,3 +104,11 @@ CREATE TABLE invoice_items (
           ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX Key ON  patients (name, date_of_birth);
+CREATE INDEX Key ON  medical_histories (admitted_at, patient_id, status);
+CREATE INDEX invoices_medical_history_id_idx ON invoices(medical_history_id);
+CREATE INDEX medical_history_id_idx ON treatment_histories(medical_history_id);
+CREATE INDEX treatment_id_idx ON treatment_histories(treatment_id);
+CREATE INDEX invoice_id_idx ON invoice_items(invoice_id);
+CREATE INDEX invoice_items_treatment_id_idx ON invoice_items(treatment_id);
