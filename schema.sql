@@ -71,3 +71,18 @@ ALTER TABLE visits ADD COLUMN id INT GENERATED ALWAYS AS IDENTITY;
 CREATE INDEX animal_id_index ON visits (animal_id);
 CREATE INDEX vet_id_id_index ON visits (vet_id);
 CREATE INDEX email_id_index ON owners (email);
+
+CREATE TABLE treatment_histories(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  medical_history_id INT,
+  treatment_id INT,
+  CONSTRAINT fk_medical_history_id
+      FOREIGN KEY(medical_history_id)
+        REFERENCES medical_histories(id)
+          ON DELETE CASCADE,
+  CONSTRAINT fk_treatment_id
+      FOREIGN KEY(treatment_id)
+        REFERENCES treatments(id)
+          ON DELETE CASCADE,
+  PRIMARY KEY(id)
+);
