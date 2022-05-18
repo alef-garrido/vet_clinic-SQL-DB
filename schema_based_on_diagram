@@ -4,3 +4,5 @@ CREATE TABLE patients (
   date_of_birth DATE,
   PRIMARY KEY (id)
 );
+
+CREATE INDEX Key ON  patients (name, date_of_birth);
