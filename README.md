@@ -5,6 +5,10 @@
 
 >  RDB built using PostgreSQL, themed on a Veterinary Clinic.
 
+## Database schema-Diagram
+
+![](./assets/VET_CLINIC_SQL_DB_DIAGRAM.jpeg)
+
 ## Getting Started
 
 ### Pre-Requirements
@@ -43,11 +47,17 @@ Now verify it. The following command displays all content in your selected table
 
 ## Authors
 
+👤 Mohamed Eldeeb 
+
+- [GitHub](https://github.com/eng-mohamed-eldeeb)
+- [Twitter](https://www.linkedin.com/in/mohamed-eldeeb-a69022206/)
+- [LinkedIn](https://twitter.com/eldeeb_3o)
+
 👤 Alef Garrido
 
-- GitHub: [lef-garrido](https://github.com/alef-garrido)
-- Twitter: [Alef_Garrido](https://twitter.com/Alef_Garrido)
-- LinkedIn: [alef-g](https://www.linkedin.com/in/alef-g/)
+- [GitHub](https://github.com/alef-garrido)
+- [Twitter](https://twitter.com/Alef_Garrido)
+- [LinkedIn](https://www.linkedin.com/in/alef-g/)
 
 ## 🤝 Contributing
 
