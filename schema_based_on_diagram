@@ -6,3 +6,17 @@ CREATE TABLE patients (
 );
 
 CREATE INDEX Key ON  patients (name, date_of_birth);
+
+CREATE TABLE medical_histories (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  admitted_at TIMESTAMP NOT NULL,
+  patient_id INT,
+  status VARCHAR(50),
+  CONSTRAINT fk_patient_id
+      FOREIGN KEY(patient_id)
+        REFERENCES patients(id)
+          ON DELETE CASCADE,
+  PRIMARY KEY (id)
+);
+
+CREATE INDEX Key ON  medical_histories (admitted_at, patient_id, status);
