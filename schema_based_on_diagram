@@ -5,8 +5,6 @@ CREATE TABLE patients (
   PRIMARY KEY (id)
 );
 
-CREATE INDEX Key ON  patients (name, date_of_birth);
-
 CREATE TABLE medical_histories (
   id INT GENERATED ALWAYS AS IDENTITY,
   admitted_at TIMESTAMP NOT NULL,
@@ -18,8 +16,6 @@ CREATE TABLE medical_histories (
           ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
-
-CREATE INDEX Key ON  medical_histories (admitted_at, patient_id, status);
 
 CREATE TABLE invoices (
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -33,8 +29,6 @@ CREATE TABLE invoices (
         ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
-
-CREATE INDEX invoices_medical_history_id_idx ON invoices(medical_history_id);
 
 CREATE TABLE treatments (
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -58,5 +52,28 @@ CREATE TABLE treatment_histories(
   PRIMARY KEY(id)
 );
 
+CREATE TABLE invoice_items (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  unit_price DECIMAL NOT NULL,
+  quantity INT NOT NULL,
+  total_price DECIMAL NOT NULL,
+  invoice_id INT,
+  treatment_id INT,
+  CONSTRAINT fk_invoice_id
+     FOREIGN KEY(invoice_id)
+       REFERENCES invoices(id)
+         ON DELETE CASCADE,
+  CONSTRAINT fk_treatment_id
+      FOREIGN KEY(treatment_id)
+        REFERENCES treatments(id)
+          ON DELETE CASCADE,
+  PRIMARY KEY (id)
+);
+
+CREATE INDEX Key ON  patients (name, date_of_birth);
+CREATE INDEX Key ON  medical_histories (admitted_at, patient_id, status);
+CREATE INDEX invoices_medical_history_id_idx ON invoices(medical_history_id);
 CREATE INDEX medical_history_id_idx ON treatment_histories(medical_history_id);
 CREATE INDEX treatment_id_idx ON treatment_histories(treatment_id);
+CREATE INDEX invoice_id_idx ON invoice_items(invoice_id);
+CREATE INDEX invoice_items_treatment_id_idx ON invoice_items(treatment_id);
