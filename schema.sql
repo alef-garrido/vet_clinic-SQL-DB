@@ -86,3 +86,21 @@ CREATE TABLE treatment_histories(
           ON DELETE CASCADE,
   PRIMARY KEY(id)
 );
+
+CREATE TABLE invoice_items (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  unit_price DECIMAL NOT NULL,
+  quantity INT NOT NULL,
+  total_price DECIMAL NOT NULL,
+  invoice_id INT,
+  treatment_id INT,
+  CONSTRAINT fk_invoice_id
+     FOREIGN KEY(invoice_id)
+       REFERENCES invoices(id)
+         ON DELETE CASCADE,
+  CONSTRAINT fk_treatment_id
+      FOREIGN KEY(treatment_id)
+        REFERENCES treatments(id)
+          ON DELETE CASCADE,
+  PRIMARY KEY (id)
+);
