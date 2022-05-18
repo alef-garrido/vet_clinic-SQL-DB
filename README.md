@@ -5,6 +5,10 @@
 
 >  RDB built using PostgreSQL, themed on a Veterinary Clinic.
 
+## Database schema-Diagram
+
+![](./assets/VET_CLINIC_SQL_DB_DIAGRAM.jpeg)
+
 ## Getting Started
 
 ### Pre-Requirements
